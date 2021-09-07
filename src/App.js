@@ -47,7 +47,6 @@ function App() {
       // clear title and content from state
       setTitle();
       setContent();
-
       // update write to json file
       saveJson(posts);
 
@@ -79,24 +78,24 @@ function App() {
   //////////////////////////////////////////
   const updatePost = () => {
     // populate post info from temp state and prepare new object for changed post
-    // let editedPost = {
-    //   "id": updateID,
-    //   "title": updateTitle,
-    //   "content": updateContent
-    // }
-    // // remove old post with same ID and get the remaining data /// filter 
-    // let filterPost = [...data].filter(OBJ=>OBJ.id!==updateID);
-    // // prepare object with edited post + remaining data from object above
-    // let posts = [...filterPost, editedPost];
-    // // push int state
-    // setData(posts);
+    let editedPost = {
+      "id": updateID,
+      "title": updateTitle,
+      "content": updateContent
+    }
+    // remove old post with same ID and get the remaining data /// filter 
+    let filterPost = [...data].filter(OBJ=>OBJ.id!==updateID);
+    // prepare object with edited post + remaining data from object above
+    let posts = [...filterPost, editedPost];
+    // push int state
+    setData(posts);
 
-    // setUpdateID();
-    // setUpdateTitle();
-    // setUpdateContent();
+    setUpdateID();
+    setUpdateTitle();
+    setUpdateContent();
 
-    // // update write to json file
-    // saveJson(posts);
+    // update write to json file
+    saveJson(posts);
 
   }
 
@@ -104,12 +103,12 @@ function App() {
   //////////////////////////////////////////
   // this function will receive all uodated state / posts after you add, edit delete post
   const saveJson = (posts) => {
-    // // api URL // end point from node server / express server
-    // const url = 'http://localhost:5000/write'
-    // axios.post(url, posts)
-    // .then(response => {
-    //   // console.log(response);
-    // });
+    // api URL // end point from node server / express server
+    const url = 'http://localhost:5000/write'
+    axios.post(url, posts)
+    .then(response => {
+      // console.log(response);
+    });
   }
 
   // Bonus Section
